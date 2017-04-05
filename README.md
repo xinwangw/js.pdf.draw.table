@@ -6,6 +6,9 @@ Can set header's font and background, set table body's font and odd/even rows' b
 # Sample PDF
 
 See the sample generated PDF [here](TestTable.pdf)
+
+[Live Demo](http://www.startitgroup.net/jspdftable/table.html)
+
 # License (MIT)
 
 Copyright (c) 2012 Xin Wang, https://github.com/xinwangw/js.pdf.draw.table
