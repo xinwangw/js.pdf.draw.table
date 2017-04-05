@@ -3,6 +3,9 @@
 Use jsPDF to generate PDF by JavaScript. This project is the function to draw table based on tableData json.
 Can set header's font and background, set table body's font and odd/even rows' background. Header will be repeat in new page.
 
+# Sample PDF
+
+See the sample generated PDF [here](TestTable.pdf)
 # License (MIT)
 
 Copyright (c) 2012 Xin Wang, https://github.com/xinwangw/js.pdf.draw.table
