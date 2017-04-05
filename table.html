@@ -7,11 +7,110 @@
     <script type="text/javascript" src="js/jquery/jquery-ui-1.8.17.custom.min.js"></script>
     <script type="text/javascript" src="js/jspdf.min.js"></script>
     <script type="text/javascript" src="js/pdf_table.js"></script>
+    <style>
+    body{
+      padding: 10px;
+    }
+    table {
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        padding: 5px;
+    }
+    th{
+      font-size:12pt;
+      font-weight: bold;
+      background-color: rgb(238,238,238);
+    }
+    td{
+      font-size:10pt;
+    }
+    tr:nth-child(even) {background: rgb(238,238,238)}
+    tr:nth-child(odd) {background: #FFF}
+    #button{
+      margin-top: 20px;
+    }
+    </style>
 </head>
 <body>
+  <img src="logo.jpg" width="5%" height="5%"/>
+  <table id="testTable" >
+    <thead>
+      <th>ID</th>
+      <th>Fist Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <input type="button" value="Download PDF" id="button"/>
 <script>
     $(document).ready(function () {
+      var tableData = {
+        header:{
+          font: "bold 12 times",
+          backgroundColor: {r:238,g:238,b:238},
+          data:[
+            {name:"ID",width:60},
+            {name:"First Name",width:60},
+            {name:"Last Name",width:160},
+            {name:"Email",width:160}
+          ]
+        },
+        body:{
+          font: "normal 10 times",
+          oddRowBackgroundColor:{r:255,g:255,b:255},
+          evenRowBackgroundColor:{r:238,g:238,b:238},
+          data:[
+            ["1","Neque","Porro","neque.porro@gmail.com"],
+            ["2","Tdolorem","ipsum","tdolorem.ipsum@gmail.com"],
+            ["3","Quia","Dolor","quia.dolor@gmail.com"],
+            ["4","Aliquam","Bibendum","aliquam.bibendum@gmail.com"],
+            ["5","Ornare","Ornare","ornare.ornare@gmail.com"],
+            ["6","Mauris","Efficitur","mauris.efficitur@gmail.com"],
+            ["7","Maximus","Erat","maximus.erat@gmail.com"],
+            ["8","Nunc","Porta","nunc.porta@gmail.com"],
+            ["9","Nulla","Dictum","nulla.dictum@gmail.com"]
+          ]
+        }
+      };
+      var table = function(){
+      	// A4		 595x842 in pt
+          var pdf = new jsPDF('p','pt','a4');
+          var drawTable = new PdfDrawTable(pdf,'a4');
+          drawTable.init();
+          var headerImgData,headerImgWidth,headerImgHeight;
+          drawTable.getImageBase64("logo.jpg", function(data,w,h){
+          	// console.log(data);
+          	headerImgData = data;
+          	headerImgWidth = w*.1;
+          	headerImgHeight = h*.1;
+          	pdf.addImage(data, 'JPEG', 20, 20, headerImgWidth, headerImgHeight);
+          	tableData.header.img={
+          		data : headerImgData,
+          		width : headerImgWidth,
+          		height : headerImgHeight
+          	};
+          	drawTable.draw(60,tableData);
+      		pdf.save('TestTable.pdf');
+          });
+
+      }
+      // show table data
+      $.each(tableData.body.data, function(i, v){
+        var id = v[0];
+        $('#testTable tbody').append('<tr id="tr'+id+'"></tr>')
+        $.each(v, function(index, tdvalue){
+          $('#tr'+id).append('<td>'+tdvalue+'</td>');
+        });
+      });
+      // download button
+      $('#button').click(function() {
         table();
+      });
     });
 </script>
 </body>

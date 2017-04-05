@@ -1,4 +1,7 @@
-//
+/*
+PdfDrawTable
+MIT license.
+*/
 var PdfDrawTable = function(pdf, format, tableStyle){
 	var defaultTableStyle = {
 		font: {
@@ -197,100 +200,3 @@ var PdfDrawTable = function(pdf, format, tableStyle){
 	    img.src = url;
 	};
 };
-function table(){
-	// A4		 595x842 in pt
-    var pdf = new jsPDF('p','pt','a4');
-    var drawTable = new PdfDrawTable(pdf,'a4');
-    drawTable.init();
-
-
-    var tableData = {
-    	header:{
-    		font: "bold 32 times",
-    		backgroundColor: {r:238,g:238,b:238},
-    		data:[
-	    		{name:"column 1",width:60},
-	    		{name:"column 2",width:60},
-	    		{name:"column 3",width:160},
-	    		{name:"column 4",width:160}
-    		]
-    	},
-    	body:{
-    		font: "normal 10 times",
-    		oddRowBackgroundColor:{r:255,g:255,b:255},
-    		evenRowBackgroundColor:{r:238,g:238,b:238},
-    		data:[
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1 ksdfjsdf  jlskdf  slkdjf","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj dfkjlsdf  ksljdf slf j lskjdfsdfj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf jkj sdfjljsdf jljfsdf jlksdf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"],
-	    		["test 1","test 2","test 3","test 4"],
-	    		["test 1","test 2","test 3","test 4j slkdjfsdflj lkj klsj flkj sfjkl jlsjf"]
-    		]
-    	}
-    };
-    var headerImgData,headerImgWidth,headerImgHeight;
-    drawTable.getImageBase64("logo.jpg", function(data,w,h){
-    	// console.log(data);
-    	headerImgData = data;
-    	headerImgWidth = w*.1;
-    	headerImgHeight = h*.1;
-    	pdf.addImage(data, 'JPEG', 20, 20, headerImgWidth, headerImgHeight);
-    	tableData.header.img={
-    		data : headerImgData,
-    		width : headerImgWidth,
-    		height : headerImgHeight
-    	};
-    	drawTable.draw(60,tableData);
-		pdf.save('TestTable.pdf');
-    });
-
-}
